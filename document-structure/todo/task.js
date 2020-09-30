@@ -6,7 +6,7 @@ input.onkeydown = function(e) {
     input.value.trim();
     let enter = String(e.key);
     if (enter === 'Enter' && (input.value !== '')) {
-        toDo();
+        addTask();
     }
 }
 
@@ -14,18 +14,18 @@ tasksAdd.onclick = function(e) {
     e.preventDefault();
     input.value.trim();
     if (input.value !== '') {
-        toDo();
+        addTask();
     }
 }
 
-function toDo() {
-    let todo = document.createElement('div');
-        todo.className = 'task';
-        todo.innerHTML = `<div class="task__title">${input.value}</div><a href="#" class="task__remove">&times;</a>`;
-        tasksList.insertAdjacentElement('beforeend', todo);
+function addTask() {
+    let task = document.createElement('div');
+        task.className = 'task';
+        task.innerHTML = `<div class="task__title">${input.value}</div><a href="#" class="task__remove">&times;</a>`;
+        tasksList.insertAdjacentElement('beforeend', task);
         document.forms[0].reset();
-        let elementRemove = todo.lastChild;
+        let elementRemove = task.lastChild;
         elementRemove.onclick = function() {
-            todo.remove();
+            task.remove();
         }  
 }
