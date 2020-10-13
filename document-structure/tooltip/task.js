@@ -1,5 +1,5 @@
-const tooltip = document.createElement('div');
 const body = document.querySelector('body');
+const tooltip = document.createElement('div');
 tooltip.className = 'tooltip';
 body.appendChild(tooltip);
 
