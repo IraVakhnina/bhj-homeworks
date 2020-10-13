@@ -1,9 +1,14 @@
-const tooltip = Array.from(document.querySelectorAll('.has-tooltip'));
-tooltip.forEach(link => { 
+const tooltip = document.createElement('div');
+const body = document.querySelector('body');
+tooltip.className = 'tooltip';
+body.appendChild(tooltip);
 
-    link.addEventListener('click', event => {
-        event.preventDefault();
-        link.insertAdjacentHTML('afterend', `<div class="tooltip">${link.getAttribute('title')}</div>`);
-        document.querySelector('.tooltip').classList.toggle('tooltip_active');
-    })
+document.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (e.target.classList.contains('has-tooltip')) {
+        tooltip.innerText = e.target.getAttribute('title');
+        tooltip.style.top = (Number(e.target.getBoundingClientRect().top) + 22) + 'px';
+        tooltip.style.left = e.target.getBoundingClientRect().left + 'px';
+        tooltip.classList.toggle('tooltip_active');
+    }
 });
